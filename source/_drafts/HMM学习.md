@@ -3,7 +3,7 @@ abbrlink: ''
 categories: []
 date: '2023-12-03T16:45:57.524274+08:00'
 tags: []
-title: HMM学习
+title: HMM（隐性马尔可夫模型）学习
 updated: 2023-12-3T17:11:55.433+8:0
 ---
 HMM隐性马尔可夫模型
@@ -70,8 +70,16 @@ HMM隐性马尔可夫模型
 
 ## 3.1 评估问题
 
-### 1. 暴力解法
+### 3.1.1. 暴力解法
 
 最简单的，暴力解法，就和上面例子的一样，一路推过去就能把概率全部算出来，但是对于数据很多的时候就要算很久
 
-### 2.前向算法(Forward Algorithm)
+### 3.1.2.前向算法(Forward Algorithm)
+
+定义在模型λ=(A,B,π)条件下，t时刻时隐藏状态为 qi ，观测状态的序列为 o1,o2,...,ot的概率为前向概率。记为：
+
+![](https://pic4.zhimg.com/80/v2-dfe813f2da82670c1301a5f6853454f3_720w.webp)
+
+若我们知道t时刻所有隐藏状态q的前向概率，则可以推出t+1时刻的前向概率：
+
+![https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png](https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png)
