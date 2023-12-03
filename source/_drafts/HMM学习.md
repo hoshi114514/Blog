@@ -74,7 +74,7 @@ HMM隐性马尔可夫模型
 
 ### 3.1.2.前向算法(Forward Algorithm)
 
-定义在模型λ=(A,B,π)条件下，t时刻时隐藏状态为 qi ，观测状态的序列为 o1,o2,...,ot的概率为前向概率。记为：
+定义在模型λ=(A,B,π)条件下，t时刻时隐藏状态为 qt = i ，观测状态的序列为 o1,o2,...,ot的概率为前向概率。记为：
 
 ![https://s2.loli.net/2023/12/04/8sLoyzpP9trCc73.png](https://s2.loli.net/2023/12/04/8sLoyzpP9trCc73.png)
 
@@ -113,3 +113,51 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 同样的，还需要把观测序列推到t+1，因此乘上bj(ot+1)，得到βt(i)
 
 那最初的后向概率怎么得到呢，前向概率有初始状态可以推出来，但最初的后向概率是没有条件推导的，因此直接设置T时刻所有的后向概率为1，为什么呢，李琳山教授说的，经验之谈
+
+### 3.2.2 推测隐藏序列
+
+1.定义一个新变量γ，表示已知模型和观测序列时，t时刻为隐藏状态为 i 的概率
+
+![https://s2.loli.net/2023/12/04/m59Jw4SnTzRY3uF.png](https://s2.loli.net/2023/12/04/m59Jw4SnTzRY3uF.png)
+
+式子中的P(O,qt = i | λ)怎么来呢，前向概率和后向概率相乘即得到P(O,qt = i | λ)，可以自己乘一下看看
+
+即P(O,qt = i | λ) = ɑt(i) * βt(i)
+
+![https://s2.loli.net/2023/12/04/74lWRbivNwhysqg.png](https://s2.loli.net/2023/12/04/74lWRbivNwhysqg.png)
+
+这个有什么用？ t时刻的隐藏状态有很多可能，γ最大的那个隐藏状态，我们就认为它是最有可能的隐藏状态
+
+
+**2.维特比算法(viterbi algorithm)**
+
+和前向算法有点像，定义一个新变量δ，和前向概率ɑ相比，q1~qt-1不再随意，而是确定的，取概率最大的路径
+
+![https://s2.loli.net/2023/12/04/Ja3tIUTmMk859Kh.png](https://s2.loli.net/2023/12/04/Ja3tIUTmMk859Kh.png)
+
+递推公式为
+![https://s2.loli.net/2023/12/04/m3jcafCebISNKEk.png](https://s2.loli.net/2023/12/04/m3jcafCebISNKEk.png)
+
+非常好理解，前向概率因为对前t-1个观测状态不设限制，因此用求和符号，而维特比只取概率最大的路径，因此是取最大值
+
+再另取一个变量
+![https://s2.loli.net/2023/12/04/OHScIMYrU2wRlea.png](https://s2.loli.net/2023/12/04/OHScIMYrU2wRlea.png)
+
+这个看表达式也知道，就是记录下你是从哪个状态跳过来的，把路径记录下来
+
+![https://s2.loli.net/2023/12/04/tnpkzXUSNeOy1Qi.png](https://s2.loli.net/2023/12/04/tnpkzXUSNeOy1Qi.png)
+
+![https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png](https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png)
+
+
+具体例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节
+
+注意，Ψ表示的是δ*aij的最大值的序号，如：
+
+![https://s2.loli.net/2023/12/04/7LkPrFA6MhVIdun.png](https://s2.loli.net/2023/12/04/7LkPrFA6MhVIdun.png)
+
+Ψ = 3表示它的上一个状态是状态3
+
+以及再注意：红框的两个不需要算，不要被迷惑了(别问我为什么知道，因为我中了招)
+
+![https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png](https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png)
