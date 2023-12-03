@@ -91,7 +91,7 @@ aij为P(qt+1= j | qt = i)，式子中at(i)*aij 后得到P(o1，o2...ot，qt+1 = 
 
 既然可以有t时刻推导出t+1时刻的一个隐藏状态的前向概率，那么整个t+1时刻所有j的可能的前向概率都可以推出来，那么又可以接着推t+2时刻，直到完成整个序列T，那么初始的前向概率怎么得呢？由于模型已知，则初始状态π已知，而初始状态π乘以b1(o1)就是最初的前向概率，由初始状态递推即可，最终∑aT(i)即为P(O|λ)
 
-具体例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 2.3节，如果看我的看不懂可以看看他的，理解稍微有些不同
+具体计算的例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 2.3节，如果看我的看不懂可以看看他的，理解稍微有些不同
 
 ## 3.2预测问题
 
@@ -150,14 +150,14 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 ![https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png](https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png)
 
 
-具体例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节
+具体计算例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节
 
-注意，Ψ表示的是δ*aij的最大值的序号，如：
+**注意，Ψ表示的是δ*aij的最大值的序号，如：**
 
 ![https://s2.loli.net/2023/12/04/7LkPrFA6MhVIdun.png](https://s2.loli.net/2023/12/04/7LkPrFA6MhVIdun.png)
 
 Ψ = 3表示它的上一个状态是状态3
 
-以及再注意：红框的两个不需要算，不要被迷惑了(别问我为什么知道，因为我中了招)
+**以及再注意：红框的两个不需要算，因为δ不是最大，不要被迷惑了(别问我为什么知道，因为我中了招)**
 
 ![https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png](https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png)
