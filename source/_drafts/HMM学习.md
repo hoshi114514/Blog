@@ -76,18 +76,18 @@ HMM隐性马尔可夫模型
 
 定义在模型λ=(A,B,π)条件下，t时刻时隐藏状态为 qi ，观测状态的序列为 o1,o2,...,ot的概率为前向概率。记为：
 
-![](https://pic4.zhimg.com/80/v2-dfe813f2da82670c1301a5f6853454f3_720w.webp)
+![https://s2.loli.net/2023/12/04/8sLoyzpP9trCc73.png](https://s2.loli.net/2023/12/04/8sLoyzpP9trCc73.png)
 
 若我们知道t时刻所有隐藏状态q的前向概率，则可以推出t+1时刻的前向概率：
 
 ![https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png](https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png)
 
 
-式子中at(i)*aij理解为  t时刻为qi时，t+1时刻为qj的概率，P(o1，o2...ot，it+1 = qj | λ，it = qi)
+aij为P(qt+1= j | qt = i)，式子中at(i)*aij理解为  t时刻为qi时，t+1时刻为qj的概率，P(o1，o2...ot，qt+1 = j | λ，qt = i)
 
-求和符号就是把所有i的可能性相加，就可以得到t+1时刻为qj的概率，P(o1，o2...ot，it+1 = qj | λ)，目前只确定了隐藏序列，对比前向概率公式，发现观测序列只到了ot，要符合前向概率公式，应把观测序列推到ot+1
+求和符号就是把所有i的可能性相加，就可以得到t+1时刻为qj的概率，P(o1，o2...ot，qt+1 = j | λ)，目前只确定了隐藏序列，对比前向概率公式，发现观测序列只到了ot，要符合前向概率公式，应把观测序列推到ot+1
 
-观测序列已经确定，因此再乘以bj(ot+1)，即乘上 隐藏序列为qj时，观测序列为ot+1的概率，即可得到P(o1，o2...ot+1，it+1 = qj | λ)，即t+1时刻的前向概率at+1(j)
+观测序列已经确定，因此再乘以bj(ot+1)，即乘上 隐藏序列为qj时，观测序列为ot+1的概率，即可得到P(o1，o2...ot+1，qt+1 = j | λ)，即t+1时刻的前向概率at+1(j)
 
 既然可以有t时刻推导出t+1时刻的一个隐藏状态的前向概率，那么整个t+1时刻所有j的可能的前向概率都可以推出来，那么又可以接着推t+2时刻，直到完成整个序列T，那么初始的前向概率怎么得呢？由于模型已知，则初始状态π已知，而初始状态π乘以b1(o1)就是最初的前向概率，由初始状态递推即可，最终∑aT(i)即为P(O|λ)
 
@@ -98,3 +98,16 @@ HMM隐性马尔可夫模型
 ### 3.2.1后向算法(Backward Algorithm)
 
 和前向算法很像，只是前向算法是从前往后推，后向算法是从后往前推
+
+定义在模型λ=(A,B,π)，t时刻时隐藏状态为 qi 的条件下，观测状态的序列为 ot+1,ot+2,...,oT的概率为后向概率。记为：![https://s2.loli.net/2023/12/03/JdhKCGbkLSt7srN.png](https://s2.loli.net/2023/12/03/JdhKCGbkLSt7srN.png)
+
+
+![https://s2.loli.net/2023/12/03/UX2Tqt3kuZNBhil.png](https://s2.loli.net/2023/12/03/UX2Tqt3kuZNBhil.png)
+
+由后向概率定义得，βt+1(j) = P（ot+2，ot+3.....oT | qt+1 = j，λ）
+
+aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j | qt = i，λ）
+
+求和后得到P（ot+2，ot+3.....oT  | qt = i，λ）
+
+同样的，还需要把观测序列推到t+1，因此乘上bj(ot+1)，得到βt(i)
