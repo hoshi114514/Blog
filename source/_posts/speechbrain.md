@@ -45,7 +45,7 @@ anaconda的官网：[Anaconda | The World’s Most Popular Data Science Platform
 
 无脑输入y回车就对了
 
-完成后输入 `activate speechbrain`就可以进入名字叫speechbrain的虚拟环境中了
+完成后输入 `activate speechbrain`就可以进入名字叫speechbrain的虚拟环境中了(我的环境名字叫newspeech)
 
 ![https://s2.loli.net/2023/12/04/CSu4QcX7eMR1hOf.png](https://s2.loli.net/2023/12/04/CSu4QcX7eMR1hOf.png)
 
