@@ -30,7 +30,7 @@ anaconda的官网：[Anaconda | The World’s Most Popular Data Science Platform
 
 ![https://s2.loli.net/2023/12/04/OxHlvpQ5PEVd694.png](https://s2.loli.net/2023/12/04/OxHlvpQ5PEVd694.png)
 
-## anaconda安装及python环境的配置
+## python环境的配置
 
 打开anaconda prompt
 
