@@ -2,6 +2,7 @@
 abbrlink: ''
 categories:
 - - 语音学习
+cover: https://s2.loli.net/2023/12/03/kpyqUAZs7mLGISv.png
 date: '2023-12-03T16:45:57.524274+08:00'
 tags:
 - 语音学习
