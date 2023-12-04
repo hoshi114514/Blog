@@ -169,4 +169,4 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 
 ![https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png](https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png)
 
-获得所有aij和bj后就得到新的模型参数λ=(A,B,π)，再把新的模型参数重新代入，不断循环，直到大致不再变化
+获得所有aij和bj后就得到新的模型参数λ=(A,B,π)，再把新的模型参数重新代入，不断循环，直到收敛
