@@ -34,11 +34,9 @@ HMM隐性马尔可夫模型
 
 为了简化计算，做出两个假设：
 
-```
 1.每一个隐藏状态只依赖于上一个隐藏状态，即你抽哪个盒子只由上一次抽的盒子决定
 
 2.观测状态只由当前的隐藏状态决定，即抽球时只从当前盒子里抽，不受其他盒子影响
-```
 
 因此我们得到状态转移矩阵(以之前的例子，决定下一个盒子是哪个)：
 
@@ -92,7 +90,8 @@ aij为P(qt+1= j | qt = i)，式子中at(i)*aij 后得到P(o1，o2...ot，qt+1 = 
 
 既然可以有t时刻推导出t+1时刻的一个隐藏状态的前向概率，那么整个t+1时刻所有j的可能的前向概率都可以推出来，那么又可以接着推t+2时刻，直到完成整个序列T，那么初始的前向概率怎么得呢？由于模型已知，则初始状态π已知，而初始状态π乘以b1(o1)就是最初的前向概率，由初始状态递推即可，最终∑aT(i)即为P(O|λ)
 
-具体计算的例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 2.3节，如果看我的看不懂可以看看他的，理解稍微有些不同
+**具体计算的例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 2.3节，如果看我的看不懂可以看看他的，理解稍微有些不同**
+
 
 ## 3.2预测问题
 
@@ -148,7 +147,10 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 
 ![https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png](https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png)
 
-具体计算例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节
+
+##### **具体计算例子**
+
+**可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节**
 
 **注意，Ψ表示的是δ*aij的最大值的序号，如：**
 
@@ -164,7 +166,6 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 
 现有的算法并不能直接获得模型参数，而是优化模型参数，让模型变得更好
 
-
 定义一个新变量ε，表示已知模型和观测序列，隐藏状态qt=i，qt+1=j的概率
 
 ![https://s2.loli.net/2023/12/04/8kmNrG15itnTKcE.png](https://s2.loli.net/2023/12/04/8kmNrG15itnTKcE.png)
@@ -172,3 +173,10 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 ![https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png](https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png)
 
 获得所有aij和bj后就得到新的模型参数λ=(A,B,π)，再把新的模型参数重新代入，不断循环，直到收敛
+
+
+# 参考资料：
+
+> 台大李琳山教授的数位语音处理[week03-HMM的三个基本问题\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1L5411m7At?p=3&vd_source=125d9c6f7177465e6e9cd1d14a41b98b)
+
+> 知乎文章 [隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926)
