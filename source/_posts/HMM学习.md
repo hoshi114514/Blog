@@ -1,8 +1,10 @@
 ---
 abbrlink: ''
-categories: []
+categories:
+- - 语音学习
 date: '2023-12-03T16:45:57.524274+08:00'
-tags: []
+tags:
+- 语音学习
 title: HMM（隐性马尔可夫模型）学习
 updated: 2023-12-4T16:31:19.343+8:0
 ---
