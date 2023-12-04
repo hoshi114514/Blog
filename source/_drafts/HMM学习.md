@@ -4,7 +4,7 @@ categories: []
 date: '2023-12-03T16:45:57.524274+08:00'
 tags: []
 title: HMM（隐性马尔可夫模型）学习
-updated: 2023-12-3T23:34:18.654+8:0
+updated: 2023-12-4T16:31:19.343+8:0
 ---
 HMM隐性马尔可夫模型
 
@@ -82,7 +82,6 @@ HMM隐性马尔可夫模型
 
 ![https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png](https://s2.loli.net/2023/12/03/9OsMIuygtE1Qwcx.png)
 
-
 aij为P(qt+1= j | qt = i)，式子中at(i)*aij 后得到P(o1，o2...ot，qt+1 = j | λ，qt = i)
 
 求和符号就是把所有i的可能性相加，就可以得到t+1时刻为qj的概率，P(o1，o2...ot，qt+1 = j | λ)，目前只确定了隐藏序列，对比前向概率公式，发现观测序列只到了ot，要符合前向概率公式，应把观测序列推到ot+1
@@ -100,7 +99,6 @@ aij为P(qt+1= j | qt = i)，式子中at(i)*aij 后得到P(o1，o2...ot，qt+1 = 
 和前向算法很像，只是前向算法是从前往后推，后向算法是从后往前推
 
 定义在模型λ=(A,B,π)，t时刻时隐藏状态为 qi 的条件下，观测状态的序列为 ot+1,ot+2,...,oT的概率为后向概率。记为：![https://s2.loli.net/2023/12/03/JdhKCGbkLSt7srN.png](https://s2.loli.net/2023/12/03/JdhKCGbkLSt7srN.png)
-
 
 ![https://s2.loli.net/2023/12/03/UX2Tqt3kuZNBhil.png](https://s2.loli.net/2023/12/03/UX2Tqt3kuZNBhil.png)
 
@@ -128,7 +126,6 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 
 这个有什么用？ t时刻的隐藏状态有很多可能，γ最大的那个隐藏状态，我们就认为它是最有可能的隐藏状态
 
-
 **2.维特比算法(viterbi algorithm)**
 
 和前向算法有点像，定义一个新变量δ，和前向概率ɑ相比，q1~qt-1不再随意，而是确定的，取概率最大的路径
@@ -149,7 +146,6 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 
 ![https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png](https://s2.loli.net/2023/12/04/MZBqpdFCoDrTyNg.png)
 
-
 具体计算例子可以去看[隐马尔可夫模型HMM - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/29938926) 4.4节
 
 **注意，Ψ表示的是δ*aij的最大值的序号，如：**
@@ -161,3 +157,5 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 **以及再注意：红框的两个不需要算，因为δ不是最大，不要被迷惑了(别问我为什么知道，因为我中了招)**
 
 ![https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png](https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png)
+
+## 3.3 模型参数学习问题
