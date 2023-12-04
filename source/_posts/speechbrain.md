@@ -5,7 +5,7 @@ categories:
 date: '2023-12-04T18:00:35.479014+08:00'
 tags:
 - 语音学习
-title: speechbrain语音识别模型训练准备工作
+title: speechbrain准备工作
 updated: 2023-12-4T22:11:58.992+8:0
 ---
 # 介绍
