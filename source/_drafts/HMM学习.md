@@ -159,3 +159,14 @@ aij为P(qt+1= j | qt = i)，乘上aij后得到 P（ot+2，ot+3.....oT ,qt+1 =j |
 ![https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png](https://s2.loli.net/2023/12/04/qVCQdMrJeWwIaER.png)
 
 ## 3.3 模型参数学习问题
+
+现有的算法并不能直接获得模型参数，而是优化模型参数，让模型变得更好
+
+
+定义一个新变量ε，表示已知模型和观测序列，隐藏状态qt=i，qt+1=j的概率
+
+![https://s2.loli.net/2023/12/04/8kmNrG15itnTKcE.png](https://s2.loli.net/2023/12/04/8kmNrG15itnTKcE.png)
+
+![https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png](https://s2.loli.net/2023/12/04/tGNySYsWOhRTF6i.png)
+
+获得所有aij和bj后就得到新的模型参数λ=(A,B,π)，再把新的模型参数重新代入，不断循环，直到大致不再变化
