@@ -152,8 +152,78 @@ LM文件夹下会有result文件夹，保存有模型文件
 
 还是一样，挂了VPN后网络好能直接下载就直接下
 
-不能再手动下载
+自动下载不了再手动下载，下红框的三个，点击文件名右侧的下载图标下载，直接点击文件名的话会进入文件的详细参数，后面有说到
 
 [speechbrain/asr-crdnn-rnnlm-librispeech at main (huggingface.co)](https://huggingface.co/speechbrain/asr-crdnn-rnnlm-librispeech/tree/main)
 
 ![https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png](https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png)
+
+放在C:\Users\wdsha\ .cache\huggingface\hub\models--speechbrain--asr-crdnn-rnnlm-librispeech\blobs
+
+其中wdsha是我自己的用户名，你选择你自己的
+
+直接复制过去是不能用的，还要
+
+asr.ckpt名字改为1e795c7e18f3bab6bd5f47060ab852233deb33d7d550e989994c8683901e18d5
+
+lm.ckpt名字改为
+
+3f73e243f5f0eb070a05a2069ba5b9014232e926384cc7d5ba24cde060c84997
+
+tokenizer.ckpt名字改为
+
+37a6cba34cd520b33fd83612d5efc8ba7e351166541eb2726642bb3032234d31
+
+只能说hugging face在文件命名上有一手的，这些名字是文件在hugging face上的编号，如下图是lm.ckpt的
+
+![https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png](https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png)
+
+
+cd进入speech_recognition/ASR
+
+输入`python train.py train.yaml`即可进行训练
+
+![https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png](https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png)
+
+下面的进度条就是训练进度，进度条上的epoch 2表示现在进行到第二轮训练，具体训练的参数在train.yaml里，打开后可以修改参数
+
+
+## 可能遇到的问题
+
+### 爆显存
+
+不是每个人都拥有GTX4090，肯定会出现性能不够的情况，这个模型初始的batch_size(每次训练多少个数据)为8
+
+epoch(训练轮数)为15
+
+打开train.yaml，里面有所有的参数，ctrl+F可迅速查找想修改的参数的位置
+
+![https://s2.loli.net/2023/12/05/HoYU3QyCt45Nrgc.png](https://s2.loli.net/2023/12/05/HoYU3QyCt45Nrgc.png)
+
+我的显卡是GTX1050，而且还是笔记本版，算力很垃圾，batch_size=8时跑到30%显存就爆了，batch_size=4时跑到70%爆了，后面改成batch_size=2才能正常跑，而且跑一轮要4个小时，epoch=15跑太久了，后面改成了epoch=5，还是跑了两天才跑完，人都等晕了
+
+
+## 成功结果
+
+在speech_recognition下建立一个test.py文件，文件内容为
+
+```
+from speechbrain.pretrained import EncoderDecoderASR
+
+asr_model = EncoderDecoderASR.from_hparams(source="speechbrain/asr-crdnn-rnnlm-librispeech", savedir="/content/pretrained_model")
+audio_file = 'D:/App data/Audition/ASR_test.wav'
+transcribe_result = asr_model.transcribe_file(audio_file)
+print({transcribe_result})
+```
+
+其中，audio_file的路径是录音的路径，你自己用au或者其他软件录一个wav文件就行
+
+注意，这个模型是英文模型，你要说英文
+
+我录的话是 “speech brain can already do a lot of cool things”
+
+python test.py运行结果如下
+
+![https://s2.loli.net/2023/12/05/8QPihFVJubdTpzk.png](https://s2.loli.net/2023/12/05/8QPihFVJubdTpzk.png)
+
+性能我只能说是拉的一逼，因为官方说如果要达到可用程度，需要100~1000小时的数据，而我们下载的数据只有几个小时，所以性能不够
