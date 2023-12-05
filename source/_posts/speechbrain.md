@@ -6,7 +6,7 @@ date: '2023-12-04T18:00:35.479014+08:00'
 tags:
 - 语音学习
 title: speechbrain准备工作
-updated: 2023-12-4T22:11:58.992+8:0
+updated: 2023-12-5T16:43:39.877+8:0
 ---
 # 介绍
 
@@ -19,6 +19,8 @@ speechbrain是一个不久前才开源的语音项目，包括语音识别、说
 如果以前从来没有训练过模型或者用python写过接口啥的，需要先安装python环境，不建议直接安装python，最好通过anaconda来安装python环境
 
 以前从来没有用过github的人，要先安装git
+
+经常要去外网下载东西，所以要准备翻墙手段(VPN，网络代理)，我用的是一元机场，之前很好用，但是现在节点老是会断，不太推荐，但是很便宜
 
 ## anaconda的安装
 
@@ -73,7 +75,6 @@ conda env remove --name speech   把名为speech的环境删除
 
 可以看到我的版本是12.3
 
-
 进入pytorch下载页面[Start Locally | PyTorch](https://pytorch.org/get-started/locally/)
 
 ![https://s2.loli.net/2023/12/04/sYrkjDV5Eeuc4Pp.png](https://s2.loli.net/2023/12/04/sYrkjDV5Eeuc4Pp.png)
@@ -81,7 +82,6 @@ conda env remove --name speech   把名为speech的环境删除
 pytorch这里选择的CUDA版本一定要比自己电脑的CUDA版本低，我的电脑版本是12.3，因此选择了12.1，如果你的版本较低，就选11.8，或者可以先试试更新驱动，如果CUDA版本比11.8都要低的话，自行百度一下吧
 
 把下面的Run this command复制到anaconda里运行即可，这样pytorch就安装完了
-
 
 ## git安装
 
