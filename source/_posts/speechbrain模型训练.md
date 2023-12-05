@@ -1,8 +1,10 @@
 ---
 abbrlink: ''
-categories: []
+categories:
+- - 语音学习
 date: '2023-12-05T16:16:16.553675+08:00'
-tags: []
+tags:
+- 语音学习
 title: speechbrain模型训练
 updated: 2023-12-5T20:56:43.942+8:0
 ---
