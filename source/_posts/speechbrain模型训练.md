@@ -4,7 +4,7 @@ categories: []
 date: '2023-12-05T16:16:16.553675+08:00'
 tags: []
 title: speechbrain模型训练
-updated: 2023-12-5T16:43:17.453+8:0
+updated: 2023-12-5T20:56:43.942+8:0
 ---
 speechbrain官网[SpeechBrain Basics](https://speechbrain.github.io/tutorial_basics.html)
 
@@ -34,7 +34,6 @@ pip install -e .
 ```
 
 ## 可能会出现的问题
-
 
 ### 问题：连接不到proxy网站
 
@@ -71,6 +70,11 @@ pip config set install.trusted-host pypi.douban.com
 
 直接下载官方的准备文件[mini\_librispeech\_prepare.py](https://github.com/speechbrain/speechbrain/blob/develop/templates/speech_recognition/mini_librispeech_prepare.py)，后面运行模型的时候会自动运行这个文件里的函数，不用干什么
 
+用这个文件的时候他会报一个warning：
+
+The torchaudio backend is switched to 'soundfile'. Note that 'sox\_io' is not supported on Windows
+
+他的意思是更改为选择soundfile，sox_io再windows上不可用，我还以为sox不能用会导致什么问题，查了半天，原来是正常的😡
 
 # 训练分词器
 
@@ -86,13 +90,11 @@ pip config set install.trusted-host pypi.douban.com
 
 原本的文件夹中有mini_librispeech_prepare.py，但是里面只有一句`../mini_librispeech_prepare.py`，本意是想让程序运行上一个目录中的mini_librispeech_prepare.py，但是运行不了，我的解决办法就是把从官方下载的文件覆盖掉这个文件
 
-
 ### soundfile 和 sox问题
 
 在对音频文件进行操作的时候，windows需要soundfile，linux需要sox
 
 `pip install soundfile`下载soundfile
-
 
 ### 数据文件问题
 
@@ -178,7 +180,6 @@ tokenizer.ckpt名字改为
 
 ![https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png](https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png)
 
-
 cd进入speech_recognition/ASR
 
 输入`python train.py train.yaml`即可进行训练
@@ -186,7 +187,6 @@ cd进入speech_recognition/ASR
 ![https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png](https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png)
 
 下面的进度条就是训练进度，进度条上的epoch 2表示现在进行到第二轮训练，具体训练的参数在train.yaml里，打开后可以修改参数
-
 
 ## 可能遇到的问题
 
@@ -201,7 +201,6 @@ epoch(训练轮数)为15，轮数越大跑得越久
 ![https://s2.loli.net/2023/12/05/HoYU3QyCt45Nrgc.png](https://s2.loli.net/2023/12/05/HoYU3QyCt45Nrgc.png)
 
 我的显卡是GTX1050，而且还是笔记本版，算力很垃圾，batch_size=8时跑到30%显存就爆了，batch_size=4时跑到70%爆了，后面改成batch_size=2才能正常跑，而且跑一轮要4个小时，epoch=15跑太久了，后面改成了epoch=5，还是跑了两天才跑完，人都等晕了
-
 
 ## 成功结果
 
@@ -227,8 +226,6 @@ python test.py运行结果如下
 ![https://s2.loli.net/2023/12/05/8QPihFVJubdTpzk.png](https://s2.loli.net/2023/12/05/8QPihFVJubdTpzk.png)
 
 正确率竟然达到了惊人的33%，我的天哪，只能说是拉的一逼，因为官方说如果要达到可用程度，需要100~1000小时的数据，而我们下载的数据只有几个小时，所以性能不够
-
-
 
 # 结语
 
