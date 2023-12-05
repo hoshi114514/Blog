@@ -100,12 +100,11 @@ pip config set install.trusted-host pypi.douban.com
 
 ![https://s2.loli.net/2023/12/05/NzfLivK9uCgUhRn.png](https://s2.loli.net/2023/12/05/NzfLivK9uCgUhRn.png)
 
-但是这个文件是从huggingface下载的，而huggingface从23年5月开始把国内墙了，国内下载不了模型
+国外的网站直接下载好像是下不了的，挂VPN的话有时会显示连接超时
 
-如果挂VPN下载的话，会显示连接huggingface超时，虽然有时能练上去，看运气
+如果能下载的话就直接下
 
-
-只能手动下载
+如果不能下载，那就只能手动下载
 
 `http://www.openslr.org/resources/31/train-clean-5.tar.gz`
 
@@ -123,7 +122,7 @@ pip config set install.trusted-host pypi.douban.com
 
 Tokenizer文件夹下会有save文件夹，保存有模型文件
 
-# 训练语音模型
+# 训练语言模型
 
 输入`pip install datasets`下载文件
 
@@ -136,3 +135,25 @@ Tokenizer文件夹下会有save文件夹，保存有模型文件
 或者使用绝对路径
 
 输入`python train.py RNNLM.yaml`
+
+## 成功结果
+
+![https://s2.loli.net/2023/12/05/KlHTfpSP6ygWxwa.png](https://s2.loli.net/2023/12/05/KlHTfpSP6ygWxwa.png)
+
+LM文件夹下会有result文件夹，保存有模型文件
+
+# 训练ASR模型
+
+和分词器一样，要从openslr下载数据文件
+
+`http://www.openslr.org/resources/28/rirs_noises.zip`，放在data文件夹下
+
+还要再从huggingface下载模型文件，而huggingface从23年5月开始把国内墙了，国内正常下载不了模型
+
+还是一样，挂了VPN后网络好能直接下载就直接下
+
+不能再手动下载
+
+[speechbrain/asr-crdnn-rnnlm-librispeech at main (huggingface.co)](https://huggingface.co/speechbrain/asr-crdnn-rnnlm-librispeech/tree/main)
+
+![https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png](https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png)
