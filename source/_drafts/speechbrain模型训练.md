@@ -102,7 +102,7 @@ pip config set install.trusted-host pypi.douban.com
 
 但是这个文件是从huggingface下载的，而huggingface从23年5月开始把国内墙了，国内下载不了模型
 
-如果挂VPN下载的话，会显示连接huggingface超时
+如果挂VPN下载的话，会显示连接huggingface超时，虽然有时能练上去，看运气
 
 
 只能手动下载
