@@ -6,7 +6,7 @@ date: '2023-12-05T16:16:16.553675+08:00'
 tags:
 - 语音学习
 title: speechbrain模型训练
-updated: 2023-12-5T20:56:43.942+8:0
+updated: 2023-12-6T14:27:28.811+8:0
 ---
 speechbrain官网[SpeechBrain Basics](https://speechbrain.github.io/tutorial_basics.html)
 
@@ -16,9 +16,9 @@ speechbrain语音识别训练步骤[ASRfromScratch.ipynb - 联合实验室 (goog
 
 # 下载speechbrain
 
-现在你要下载的地方创建一个文件夹speechbrain，然后打开anaconda prompt，输入
+先在你要下载的地方创建一个文件夹speechbrain，然后打开anaconda prompt，输入
 
-`cd /d 你的文件夹目录`进入文件目录
+`cd /d 你的文件夹的绝对路径`进入文件目录
 
 输入`activate speech`进入speech虚拟环境(准备阶段创建的虚拟环境)
 
@@ -148,6 +148,11 @@ LM文件夹下会有result文件夹，保存有模型文件
 
 # 训练ASR模型
 
+cd进入speech_recognition/ASR
+
+输入`python train.py train.yaml`即可进行训练
+
+
 和分词器一样，要从openslr下载数据文件
 
 `http://www.openslr.org/resources/28/rirs_noises.zip`，放在data文件夹下
@@ -162,9 +167,7 @@ LM文件夹下会有result文件夹，保存有模型文件
 
 ![https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png](https://s2.loli.net/2023/12/05/iA4vDtBqYl2o5Fu.png)
 
-放在C:\Users\wdsha\ .cache\huggingface\hub\models--speechbrain--asr-crdnn-rnnlm-librispeech\blobs
-
-其中wdsha是我自己的用户名，你选择你自己的
+放在C:\Users\用户名\ .cache\huggingface\hub\models--speechbrain--asr-crdnn-rnnlm-librispeech\blobs
 
 直接复制过去是不能用的，还要
 
@@ -178,13 +181,12 @@ tokenizer.ckpt名字改为
 
 37a6cba34cd520b33fd83612d5efc8ba7e351166541eb2726642bb3032234d31
 
+改的名字是没有后缀的
+
 只能说hugging face在文件命名上有一手的，这些名字是文件在hugging face上的编号，如下图是lm.ckpt的
 
 ![https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png](https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png)
 
-cd进入speech_recognition/ASR
-
-输入`python train.py train.yaml`即可进行训练
 
 ![https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png](https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png)
 
