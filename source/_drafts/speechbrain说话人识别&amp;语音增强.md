@@ -47,7 +47,7 @@ dev-clean-2.tar.gz、test-clean.tar.gz、train-clean-5.tar.gz是不需要的
 =号后面是data的路径
 
 
-## 使用模型
+## 模型使用
 
 在speaker_id文件夹下新建test.py文件，输入
 
@@ -89,3 +89,7 @@ cd进入\speechbrain\templates\enhancement文件夹
 输入`python train.py train.yaml`
 
 其他同说话人识别相同
+
+## 模型使用
+
+官方没有说语音增强模型的使用方法
