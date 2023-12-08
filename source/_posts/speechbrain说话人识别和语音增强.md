@@ -6,7 +6,7 @@ date: '2023-12-07T20:54:46.164456+08:00'
 tags:
 - 语音学习
 title: speechbrain说话人识别、语音增强
-updated: 2023-12-8T20:52:25.171+8:0
+updated: 2023-12-8T22:32:26.987+8:0
 ---
 有了之前的ASR的经验后，说话人识别和语音增强的模型训练就很简单了
 
@@ -132,6 +132,8 @@ enhanced = enhancer.enhance_file(
 Error opening 'D:/ASR_test.flac': Format not recognised
 
 无论是wav格式、flac格式还是文件夹路径都不行
+
+必应搜索说是没安装ffmpeg，按照网上的方法安装后还是不行
 
 ### 成功操作
 
