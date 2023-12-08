@@ -5,8 +5,8 @@ categories:
 date: '2023-12-07T20:54:46.164456+08:00'
 tags:
 - 语音学习
-title: speechbrain说话人识别&语音增强
-updated: 2023-12-8T19:31:31.289+8:0
+title: speechbrain说话人识别、语音增强
+updated: 2023-12-8T20:52:25.171+8:0
 ---
 有了之前的ASR的经验后，说话人识别和语音增强的模型训练就很简单了
 
@@ -133,7 +133,6 @@ Error opening 'D:/ASR_test.flac': Format not recognised
 
 无论是wav格式、flac格式还是文件夹路径都不行
 
-
 ### 成功操作
 
 在example中发现
@@ -172,7 +171,6 @@ torchaudio.save('enhanced.wav', enhanced.cpu(), 16000)
 
 load_audio的参数为语音文件的路径，torchaudio.save中修改去噪后的语音的路径
 
-
 我们先来合成一个带噪声的语音，也可以选择去外面直接录
 
 使用au，录制一段自己的语音，之前录过可以跳过
@@ -190,7 +188,6 @@ au新建多轨混音项目，把语音文件和噪声文件拖进去
 在左边调节语音和噪声音量的大小，进度条拖动到语音结束部分，右键噪声部分，选择拆分，之后把后面多余的部分删掉，导出为wav文件即可，如下
 
 ![https://s2.loli.net/2023/12/08/IkUVNSy2FK1mqb9.png](https://s2.loli.net/2023/12/08/IkUVNSy2FK1mqb9.png)
-
 
 运行语音增强，得到去噪声后的语音
 
