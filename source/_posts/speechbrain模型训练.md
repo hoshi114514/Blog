@@ -5,8 +5,8 @@ categories:
 date: '2023-12-05T16:16:16.553675+08:00'
 tags:
 - 语音学习
-title: speechbrain模型训练
-updated: 2023-12-6T14:27:28.811+8:0
+title: speechbrainASR模型训练
+updated: 2023-12-8T21:10:7.768+8:0
 ---
 speechbrain官网[SpeechBrain Basics](https://speechbrain.github.io/tutorial_basics.html)
 
@@ -152,7 +152,6 @@ cd进入speech_recognition/ASR
 
 输入`python train.py train.yaml`即可进行训练
 
-
 和分词器一样，要从openslr下载数据文件
 
 `http://www.openslr.org/resources/28/rirs_noises.zip`，放在data文件夹下
@@ -186,7 +185,6 @@ tokenizer.ckpt名字改为
 只能说hugging face在文件命名上有一手的，这些名字是文件在hugging face上的编号，如下图是lm.ckpt的
 
 ![https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png](https://s2.loli.net/2023/12/05/9v16k3YaRVOhIZf.png)
-
 
 ![https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png](https://s2.loli.net/2023/12/05/AOz3C7tBh4Ylpdi.png)
 
