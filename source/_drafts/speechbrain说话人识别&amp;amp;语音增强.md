@@ -134,9 +134,9 @@ Error opening 'D:/ASR_test.flac': Format not recognised
 无论是wav格式、flac格式还是文件夹路径都不行
 
 
-### 正确操作
+### 成功操作
 
-由失败操作中发现
+在example中发现
 
 ```
 source="speechbrain/metricgan-plus-voicebank"
@@ -170,4 +170,30 @@ enhanced = enhance_model.enhance_batch(noisy, lengths=torch.tensor([1.]))
 torchaudio.save('enhanced.wav', enhanced.cpu(), 16000)
 ```
 
-load_audio的参数为语音文件的路径
+load_audio的参数为语音文件的路径，torchaudio.save中修改去噪后的语音的路径
+
+
+我们先来合成一个带噪声的语音，也可以选择去外面直接录
+
+使用au，录制一段自己的语音，之前录过可以跳过
+
+![https://s2.loli.net/2023/12/08/Hc7TenjopyNLqxb.png](https://s2.loli.net/2023/12/08/Hc7TenjopyNLqxb.png)
+
+在白噪声网站下载噪声，我用的是[Free 白噪音 Sound Effects Download - Pixabay](https://pixabay.com/zh/sound-effects/search/%E7%99%BD%E5%99%AA%E9%9F%B3/)
+
+不建议在搜索引擎直接搜白噪声，会找到很多国内的网站，基本上都要收费
+
+au新建多轨混音项目，把语音文件和噪声文件拖进去
+
+![https://s2.loli.net/2023/12/08/bWEZPirN9Q4k5tV.png](https://s2.loli.net/2023/12/08/bWEZPirN9Q4k5tV.png)
+
+在左边调节语音和噪声音量的大小，进度条拖动到语音结束部分，右键噪声部分，选择拆分，之后把后面多余的部分删掉，导出为wav文件即可，如下
+
+![https://s2.loli.net/2023/12/08/IkUVNSy2FK1mqb9.png](https://s2.loli.net/2023/12/08/IkUVNSy2FK1mqb9.png)
+
+
+运行语音增强，得到去噪声后的语音
+
+![https://s2.loli.net/2023/12/08/d8K5qxOF7gvbrLZ.png](https://s2.loli.net/2023/12/08/d8K5qxOF7gvbrLZ.png)
+
+高频噪声去除了，但是低频的噪声还有很多，语音质量也有点下降
