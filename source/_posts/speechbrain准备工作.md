@@ -2,11 +2,13 @@
 abbrlink: ''
 categories:
 - - 语音学习
+- - speechbrain
 date: '2023-12-04T18:00:35.479014+08:00'
 tags:
 - 语音学习
+- speechbrain
 title: speechbrain准备工作
-updated: 2023-12-5T16:43:39.877+8:0
+updated: 2023-12-17T23:30:23.128+8:0
 ---
 # 介绍
 
