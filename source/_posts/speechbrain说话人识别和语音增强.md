@@ -2,11 +2,13 @@
 abbrlink: ''
 categories:
 - - 语音学习
+- - speechbrain
 date: '2023-12-07T20:54:46.164456+08:00'
 tags:
 - 语音学习
+- speechbrain
 title: speechbrain说话人识别、语音增强
-updated: 2023-12-8T22:32:26.987+8:0
+updated: 2023-12-17T23:30:41.922+8:0
 ---
 有了之前的ASR的经验后，说话人识别和语音增强的模型训练就很简单了
 
