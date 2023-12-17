@@ -2,11 +2,13 @@
 abbrlink: ''
 categories:
 - - 语音学习
+- - speechbrain
 date: '2023-12-05T16:16:16.553675+08:00'
 tags:
 - 语音学习
+- speechbrain
 title: speechbrainASR模型训练
-updated: 2023-12-8T21:10:7.768+8:0
+updated: 2023-12-17T23:30:0.747+8:0
 ---
 speechbrain官网[SpeechBrain Basics](https://speechbrain.github.io/tutorial_basics.html)
 
